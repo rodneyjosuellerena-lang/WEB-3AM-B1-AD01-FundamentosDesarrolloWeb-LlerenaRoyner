@@ -1,0 +1,407 @@
+/* AutoPro Taller - estilos básicos */
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: Arial, Helvetica, sans-serif;
+  background-color: #f2f4f7;
+  color: #222222;
+}
+
+h1, h2, h3 {
+  color: #0b2545;
+}
+
+/* Pantalla de inicio de sesión */
+.pantalla-login {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #0b2545;
+  padding: 20px;
+}
+
+.caja-login {
+  background-color: #ffffff;
+  width: 100%;
+  max-width: 420px;
+  padding: 30px;
+  border-radius: 8px;
+}
+
+.caja-login h1 {
+  margin-top: 0;
+  text-align: center;
+}
+
+.texto-centrado {
+  text-align: center;
+  color: #555555;
+}
+
+.cuentas-demo {
+  border-top: 1px solid #dddddd;
+  margin-top: 20px;
+  padding-top: 15px;
+  font-size: 14px;
+}
+
+.cuentas-demo p {
+  margin: 6px 0;
+}
+
+.cuentas-demo .boton {
+  margin-top: 8px;
+  margin-right: 6px;
+}
+
+/* Mensajes */
+.mensaje-error {
+  color: #b00020;
+  min-height: 20px;
+  margin: 5px 0;
+  font-size: 14px;
+}
+
+.nota {
+  color: #555555;
+  font-size: 14px;
+}
+
+/* Cabecera */
+.cabecera {
+  background-color: #0b2545;
+  color: #ffffff;
+  padding: 15px 20px;
+}
+
+.cabecera-superior {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px;
+}
+
+.logo {
+  color: #ffffff;
+  margin: 0;
+  font-size: 24px;
+}
+
+.usuario-info {
+  margin: 0;
+  font-size: 14px;
+}
+
+.menu {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 12px;
+}
+
+.menu button {
+  background-color: transparent;
+  border: 1px solid #6b8bb0;
+  color: #ffffff;
+  padding: 6px 10px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.menu button:hover {
+  background-color: #1b3a5c;
+}
+
+.menu .boton-salir {
+  background-color: #b00020;
+  border-color: #b00020;
+}
+
+.menu .boton-salir:hover {
+  background-color: #8a0019;
+}
+
+/* Secciones */
+.seccion {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 25px 20px;
+}
+
+.bienvenida {
+  background-color: #e8eef5;
+  padding: 25px;
+  border-radius: 8px;
+  margin-bottom: 20px;
+}
+
+.bienvenida h2 {
+  margin-top: 0;
+}
+
+/* Tarjetas */
+.contenedor-tarjetas {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+}
+
+.tarjeta {
+  background-color: #ffffff;
+  border: 1px solid #d9e0e7;
+  border-radius: 8px;
+  padding: 18px;
+  flex: 1 1 230px;
+}
+
+.tarjeta h3 {
+  margin-top: 0;
+}
+
+/* Botones */
+.boton {
+  background-color: #e5e9ee;
+  color: #222222;
+  border: 1px solid #c9d3dd;
+  padding: 8px 14px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.boton:hover {
+  background-color: #d5dce4;
+}
+
+.boton-principal {
+  background-color: #e8590c;
+  border-color: #e8590c;
+  color: #ffffff;
+}
+
+.boton-principal:hover {
+  background-color: #c94b08;
+}
+
+.boton-secundario {
+  background-color: #ffffff;
+  border-color: #b9c4cf;
+  color: #222222;
+}
+
+.boton-secundario:hover {
+  background-color: #eef1f4;
+}
+
+.boton-peligro {
+  background-color: #b00020;
+  border-color: #b00020;
+  color: #ffffff;
+}
+
+.boton-peligro:hover {
+  background-color: #8a0019;
+}
+
+.boton-pequeno {
+  padding: 4px 8px;
+  font-size: 12px;
+}
+
+.boton-ancho {
+  width: 100%;
+}
+
+/* Formularios */
+.campo {
+  margin-bottom: 15px;
+}
+
+label {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: bold;
+  font-size: 14px;
+}
+
+input,
+select,
+textarea {
+  width: 100%;
+  padding: 8px;
+  border: 1px solid #b9c4cf;
+  border-radius: 4px;
+  font-size: 14px;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+input:focus,
+select:focus,
+textarea:focus {
+  outline: 2px solid #e8590c;
+}
+
+input[readonly] {
+  background-color: #eef1f4;
+}
+
+.fila {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+}
+
+.fila .campo {
+  flex: 1 1 200px;
+}
+
+fieldset {
+  background-color: #ffffff;
+  border: 1px solid #d9e0e7;
+  border-radius: 8px;
+  padding: 15px;
+  margin: 0 0 20px 0;
+}
+
+legend {
+  font-weight: bold;
+  padding: 0 5px;
+}
+
+/* Filtros y tabla */
+.filtros {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 15px;
+}
+
+.filtros input {
+  flex: 1 1 250px;
+}
+
+.filtros select {
+  flex: 0 1 180px;
+}
+
+.tabla-contenedor {
+  background-color: #ffffff;
+  border: 1px solid #d9e0e7;
+  border-radius: 8px;
+  overflow-x: auto;
+}
+
+.tabla {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.tabla th {
+  background-color: #e8eef5;
+  text-align: left;
+  padding: 10px;
+  border-bottom: 1px solid #c9d3dd;
+  font-size: 14px;
+}
+
+.tabla td {
+  padding: 10px;
+  border-bottom: 1px solid #e5e9ee;
+  vertical-align: top;
+  font-size: 14px;
+}
+
+.tabla tr:last-child td {
+  border-bottom: none;
+}
+
+.tabla td:first-child,
+.tabla td:nth-child(5) {
+  white-space: nowrap;
+}
+
+.tabla select {
+  width: auto;
+  padding: 4px;
+  font-size: 12px;
+}
+
+/* Estados */
+.estado {
+  display: inline-block;
+  padding: 2px 6px;
+  border-radius: 4px;
+  font-size: 12px;
+  font-weight: bold;
+}
+
+.estado-pendiente {
+  background-color: #fff3cd;
+  color: #7a5b00;
+}
+
+.estado-revision {
+  background-color: #dbeafe;
+  color: #1e40af;
+}
+
+.estado-proceso {
+  background-color: #ede9fe;
+  color: #5b21b6;
+}
+
+.estado-finalizado {
+  background-color: #dcfce7;
+  color: #166534;
+}
+
+.estado-cancelado {
+  background-color: #fee2e2;
+  color: #991b1b;
+}
+
+/* Pie de página */
+.pie {
+  background-color: #0b2545;
+  color: #d6e1ec;
+  text-align: center;
+  padding: 20px;
+  margin-top: 40px;
+  font-size: 14px;
+}
+
+.pie p {
+  margin: 5px 0;
+}
+
+/* Pantallas pequeñas */
+@media (max-width: 600px) {
+  .cabecera-superior {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .menu {
+    flex-direction: column;
+  }
+
+  .menu button {
+    width: 100%;
+    text-align: left;
+  }
+
+  .filtros select {
+    flex: 1 1 100%;
+  }
+
+  .tarjeta {
+    flex: 1 1 100%;
+  }
+}

@@ -1,0 +1,7 @@
+Thumbs.db
+desktop.ini
+.DS_Store
+*.tmp
+
+# Guías de estudio (solo locales, no subir a GitHub)
+GUIA-*

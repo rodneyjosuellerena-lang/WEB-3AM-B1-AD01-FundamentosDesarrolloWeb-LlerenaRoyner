@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AutoPro Taller</title>
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+  <!-- Pantalla de inicio de sesión -->
+  <div id="pantalla-login" class="pantalla-login">
+    <div class="caja-login">
+      <h1>AutoPro Taller</h1>
+      <p class="texto-centrado">Sistema de mantenimiento automotriz</p>
+
+      <form onsubmit="return iniciarSesion(event)">
+        <div class="campo">
+          <label for="login-correo">Correo electrónico</label>
+          <input type="text" id="login-correo" placeholder="cliente@taller.com">
+        </div>
+        <div class="campo">
+          <label for="login-clave">Contraseña</label>
+          <input type="password" id="login-clave" placeholder="cliente123">
+        </div>
+        <p id="login-error" class="mensaje-error"></p>
+        <button type="submit" class="boton boton-principal boton-ancho">Ingresar</button>
+      </form>
+
+      <div class="cuentas-demo">
+        <p><strong>Cliente:</strong> cliente@taller.com / cliente123</p>
+        <p><strong>Administrador:</strong> admin@taller.com / admin123</p>
+        <button type="button" class="boton boton-secundario" onclick="llenarCliente()">Usar cliente</button>
+        <button type="button" class="boton boton-secundario" onclick="llenarAdmin()">Usar administrador</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Aplicación privada -->
+  <div id="app" style="display: none;">
+    <header class="cabecera">
+      <div class="cabecera-superior">
+        <h1 class="logo">AutoPro Taller</h1>
+        <p id="usuario-info" class="usuario-info"></p>
+      </div>
+
+      <nav class="menu">
+        <button type="button" onclick="mostrarSeccion('inicio')">Inicio</button>
+        <button type="button" onclick="mostrarSeccion('acerca')">Acerca de</button>
+        <button type="button" onclick="mostrarSeccion('servicios')">Servicios</button>
+        <button type="button" id="menu-cliente" onclick="mostrarSeccion('solicitudes')">Mis solicitudes</button>
+        <button type="button" id="menu-admin" onclick="mostrarSeccion('solicitudes')" style="display: none;">Gestión de solicitudes</button>
+        <button type="button" onclick="nuevaSolicitud()">Nueva solicitud</button>
+        <button type="button" onclick="mostrarSeccion('perfil')">Mi perfil</button>
+        <button type="button" class="boton-salir" onclick="cerrarSesion()">Cerrar sesión</button>
+      </nav>
+    </header>
+
+    <main>
+      <!-- Inicio -->
+      <section id="seccion-inicio" class="seccion">
+        <div class="bienvenida">
+          <h2>Bienvenido, <span id="nombre-bienvenida">usuario</span></h2>
+          <p>Agende el mantenimiento de su vehículo y consulte el estado de sus solicitudes.</p>
+          <button type="button" class="boton boton-principal" onclick="nuevaSolicitud()">Agendar mantenimiento</button>
+          <button type="button" class="boton boton-secundario" onclick="mostrarSeccion('servicios')">Ver servicios</button>
+        </div>
+
+        <h2>Por qué elegir AutoPro Taller</h2>
+        <div class="contenedor-tarjetas">
+          <div class="tarjeta">
+            <h3>Técnicos certificados</h3>
+            <p>Personal con experiencia en mantenimiento preventivo y correctivo.</p>
+          </div>
+          <div class="tarjeta">
+            <h3>Diagnóstico honesto</h3>
+            <p>Revisamos el vehículo y explicamos el trabajo antes de realizarlo.</p>
+          </div>
+          <div class="tarjeta">
+            <h3>Garantía de 6 meses</h3>
+            <p>Respaldamos la mano de obra y los repuestos utilizados.</p>
+          </div>
+          <div class="tarjeta">
+            <h3>Seguimiento en línea</h3>
+            <p>Consulte el estado de su solicitud desde cualquier dispositivo.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Acerca de -->
+      <section id="seccion-acerca" class="seccion" style="display: none;">
+        <h2>Acerca de AutoPro Taller</h2>
+        <p>AutoPro Taller nació en 1999 como un pequeño garaje familiar. Hoy contamos con ocho estaciones de trabajo y un equipo de técnicos certificados.</p>
+        <p>Trabajamos con un enfoque preventivo: preferimos anticipar una falla antes que repararla. Cada servicio queda documentado para que el cliente tenga control de su vehículo.</p>
+
+        <div class="tarjeta">
+          <h3>Información del taller</h3>
+          <p><strong>Dirección:</strong> Av. Principal #45-120, Zona Industrial</p>
+          <p><strong>Horario:</strong> Lunes a viernes de 7:00 a 18:00. Sábados de 7:00 a 13:00.</p>
+          <p><strong>Teléfono:</strong> (+57) 604 555 0123</p>
+          <p><strong>Correo:</strong> contacto@autopro.taller</p>
+        </div>
+
+        <div class="contenedor-tarjetas">
+          <div class="tarjeta">
+            <h3>Misión</h3>
+            <p>Cuidar la movilidad de nuestros clientes con un servicio confiable y transparente.</p>
+          </div>
+          <div class="tarjeta">
+            <h3>Visión</h3>
+            <p>Ser el taller de referencia de la región por nuestra calidad técnica.</p>
+          </div>
+          <div class="tarjeta">
+            <h3>Valores</h3>
+            <p>Honestidad, responsabilidad y respeto por el tiempo del cliente.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Servicios -->
+      <section id="seccion-servicios" class="seccion" style="display: none;">
+        <h2>Nuestros servicios</h2>
+        <p>Todos los servicios incluyen una revisión visual de seguridad.</p>
+
+        <div class="contenedor-tarjetas">
+          <div class="tarjeta">
+            <h3>Cambio de aceite</h3>
+            <p>Cambio de aceite y filtros según las recomendaciones del fabricante.</p>
+            <p><strong>Precio estimado:</strong> $120.000</p>
+          </div>
+          <div class="tarjeta">
+            <h3>Revisión de frenos</h3>
+            <p>Inspección de pastillas, discos y líquido de frenos.</p>
+            <p><strong>Precio estimado:</strong> $95.000</p>
+          </div>
+          <div class="tarjeta">
+            <h3>Mantenimiento general</h3>
+            <p>Revisión de fluidos, suspensión, batería, luces y diagnóstico general.</p>
+            <p><strong>Precio estimado:</strong> $260.000</p>
+          </div>
+        </div>
+
+        <p class="nota">Los precios son estimados y pueden variar según el vehículo y los repuestos necesarios.</p>
+        <button type="button" class="boton boton-principal" onclick="nuevaSolicitud()">Solicitar un servicio</button>
+      </section>
+
+      <!-- Solicitudes -->
+      <section id="seccion-solicitudes" class="seccion" style="display: none;">
+        <h2 id="titulo-solicitudes">Mis solicitudes</h2>
+        <p id="nota-rol" class="nota"></p>
+
+        <div class="filtros">
+          <input type="text" id="filtro-texto" placeholder="Buscar por placa, cliente o servicio" oninput="mostrarSolicitudes()">
+          <select id="filtro-estado" onchange="mostrarSolicitudes()">
+            <option value="">Todos los estados</option>
+            <option value="Pendiente">Pendiente</option>
+            <option value="En revisión">En revisión</option>
+            <option value="En proceso">En proceso</option>
+            <option value="Finalizado">Finalizado</option>
+            <option value="Cancelado">Cancelado</option>
+          </select>
+          <button type="button" class="boton boton-secundario" onclick="limpiarFiltros()">Limpiar filtros</button>
+        </div>
+
+        <p id="contador-solicitudes" class="nota"></p>
+
+        <div class="tabla-contenedor" id="contenedor-tabla">
+          <table class="tabla" id="tabla-solicitudes">
+            <thead>
+              <tr>
+                <th>ID</th>
+                <th>Cliente</th>
+                <th>Vehículo</th>
+                <th>Servicio</th>
+                <th>Fecha</th>
+                <th>Estado</th>
+                <th>Acciones</th>
+              </tr>
+            </thead>
+            <tbody id="cuerpo-tabla"></tbody>
+          </table>
+        </div>
+
+        <div id="sin-solicitudes" class="tarjeta" style="display: none;">
+          <p>No hay solicitudes para mostrar.</p>
+          <button type="button" class="boton boton-principal" onclick="nuevaSolicitud()">Registrar una solicitud</button>
+        </div>
+      </section>
+
+      <!-- Formulario de solicitud -->
+      <section id="seccion-formulario" class="seccion" style="display: none;">
+        <h2 id="titulo-formulario">Nueva solicitud</h2>
+
+        <form id="form-solicitud" onsubmit="return guardarSolicitud(event)">
+          <input type="hidden" id="solicitud-id">
+
+          <fieldset>
+            <legend>Datos del cliente</legend>
+            <div class="fila">
+              <div class="campo">
+                <label for="cliente-nombre">Nombre completo</label>
+                <input type="text" id="cliente-nombre" placeholder="Ej: Carlos Ramírez">
+              </div>
+              <div class="campo">
+                <label for="cliente-correo">Correo electrónico</label>
+                <input type="text" id="cliente-correo" placeholder="cliente@correo.com">
+              </div>
+              <div class="campo">
+                <label for="cliente-telefono">Teléfono</label>
+                <input type="text" id="cliente-telefono" placeholder="300 123 4567">
+              </div>
+            </div>
+          </fieldset>
+
+          <fieldset>
+            <legend>Datos del vehículo</legend>
+            <div class="fila">
+              <div class="campo">
+                <label for="vehiculo-placa">Placa</label>
+                <input type="text" id="vehiculo-placa" placeholder="ABC-123" maxlength="7">
+              </div>
+              <div class="campo">
+                <label for="vehiculo-marca">Marca</label>
+                <input type="text" id="vehiculo-marca" placeholder="Ej: Toyota">
+              </div>
+              <div class="campo">
+                <label for="vehiculo-modelo">Modelo</label>
+                <input type="text" id="vehiculo-modelo" placeholder="Ej: Corolla">
+              </div>
+            </div>
+
+            <div class="fila">
+              <div class="campo">
+                <label for="vehiculo-anio">Año</label>
+                <input type="number" id="vehiculo-anio" placeholder="2019">
+              </div>
+              <div class="campo">
+                <label for="vehiculo-kilometraje">Kilometraje</label>
+                <input type="number" id="vehiculo-kilometraje" placeholder="45000">
+              </div>
+              <div class="campo">
+                <label for="servicio">Tipo de servicio</label>
+                <select id="servicio">
+                  <option value="">Seleccione un servicio</option>
+                  <option value="Cambio de aceite">Cambio de aceite</option>
+                  <option value="Revisión de frenos">Revisión de frenos</option>
+                  <option value="Mantenimiento general">Mantenimiento general</option>
+                </select>
+              </div>
+            </div>
+          </fieldset>
+
+          <fieldset>
+            <legend>Programación</legend>
+            <div class="fila">
+              <div class="campo">
+                <label for="solicitud-fecha">Fecha</label>
+                <input type="date" id="solicitud-fecha">
+              </div>
+              <div class="campo">
+                <label for="solicitud-hora">Hora</label>
+                <input type="time" id="solicitud-hora">
+              </div>
+              <div class="campo">
+                <label for="solicitud-modalidad">Modalidad</label>
+                <select id="solicitud-modalidad">
+                  <option value="En el taller">En el taller</option>
+                  <option value="Recogida a domicilio">Recogida a domicilio</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="campo">
+              <label for="solicitud-comentarios">Comentarios (opcional)</label>
+              <textarea id="solicitud-comentarios" rows="3" placeholder="Describa ruidos, fallas o indicaciones especiales."></textarea>
+            </div>
+          </fieldset>
+
+          <button type="submit" class="boton boton-principal" id="btn-guardar">Guardar solicitud</button>
+          <button type="button" class="boton boton-secundario" onclick="nuevaSolicitud()">Limpiar</button>
+          <button type="button" class="boton boton-secundario" id="btn-cancelar" onclick="cancelarEdicion()" style="display: none;">Cancelar edición</button>
+        </form>
+      </section>
+
+      <!-- Perfil -->
+      <section id="seccion-perfil" class="seccion" style="display: none;">
+        <h2>Mi perfil</h2>
+
+        <div class="tarjeta">
+          <p><strong>Nombre:</strong> <span id="perfil-nombre"></span></p>
+          <p><strong>Correo:</strong> <span id="perfil-correo"></span></p>
+          <p><strong>Teléfono:</strong> <span id="perfil-telefono"></span></p>
+          <p><strong>Tipo de cuenta:</strong> <span id="perfil-rol"></span></p>
+        </div>
+
+        <h3>Resumen de solicitudes</h3>
+        <div class="tarjeta">
+          <p><strong>Total:</strong> <span id="perfil-total">0</span></p>
+          <p><strong>Pendientes:</strong> <span id="perfil-pendientes">0</span></p>
+          <p><strong>Finalizadas:</strong> <span id="perfil-finalizadas">0</span></p>
+        </div>
+
+        <button type="button" class="boton boton-peligro" onclick="cerrarSesion()">Cerrar sesión</button>
+      </section>
+    </main>
+
+    <footer class="pie">
+      <p><strong>AutoPro Taller</strong> - Proyecto académico</p>
+      <p>Av. Principal #45-120, Zona Industrial | Teléfono: (+57) 604 555 0123</p>
+      <p>&copy; <span id="anio">2026</span> AutoPro Taller</p>
+    </footer>
+  </div>
+
+  <script src="js/script.js"></script>
+</body>
+</html>
