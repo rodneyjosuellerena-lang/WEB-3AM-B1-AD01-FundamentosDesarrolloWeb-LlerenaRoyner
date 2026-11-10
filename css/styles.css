@@ -405,3 +405,63 @@ legend {
     flex: 1 1 100%;
   }
 }
+
+/* Modo oscuro (cambio propio) */
+body.modo-oscuro {
+  background-color: #14181d;
+  color: #e6e9ee;
+}
+
+body.modo-oscuro h1,
+body.modo-oscuro h2,
+body.modo-oscuro h3 {
+  color: #ffffff;
+}
+
+body.modo-oscuro .bienvenida,
+body.modo-oscuro .tabla th {
+  background-color: #22303d;
+}
+
+body.modo-oscuro .tarjeta,
+body.modo-oscuro .tabla-contenedor {
+  background-color: #1d232a;
+  border-color: #33404d;
+}
+
+body.modo-oscuro .tabla td {
+  border-bottom-color: #33404d;
+}
+
+body.modo-oscuro input,
+body.modo-oscuro select,
+body.modo-oscuro textarea {
+  background-color: #1d232a;
+  color: #e6e9ee;
+  border-color: #3d4b59;
+}
+
+body.modo-oscuro .caja-login {
+  background-color: #1d232a;
+  color: #e6e9ee;
+}
+
+body.modo-oscuro .cuentas-demo {
+  border-top-color: #33404d;
+}
+
+body.modo-oscuro .texto-centrado,
+body.modo-oscuro .nota {
+  color: #b9c4cf;
+}
+
+body.modo-oscuro .boton {
+  background-color: #2b343d;
+  color: #e6e9ee;
+  border-color: #3d4b59;
+}
+
+body.modo-oscuro .boton-principal {
+  background-color: #2f6fd0;
+  color: #ffffff;
+}

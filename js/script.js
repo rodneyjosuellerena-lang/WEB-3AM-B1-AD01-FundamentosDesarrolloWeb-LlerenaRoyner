@@ -99,6 +99,7 @@ let usuarioActivo = null;
 let solicitudEnEdicion = null;
 let contadorId = 5;
 let anioActual = new Date().getFullYear();
+let modoOscuroActivo = false;
 
 /* ------------------------------------------------------------
    Inicio de la página
@@ -249,8 +250,29 @@ function mostrarSolicitudes() {
   let total = 0;
   let mostradas = 0;
 
+  /* Cambio propio: copiar las solicitudes y ordenarlas por fecha y hora
+     con el método de la burbuja, para mostrar primero la más reciente */
+  let ordenadas = [];
+
   for (let i = 0; i < solicitudes.length; i++) {
-    let s = solicitudes[i];
+    ordenadas.push(solicitudes[i]);
+  }
+
+  for (let i = 0; i < ordenadas.length - 1; i++) {
+    for (let j = 0; j < ordenadas.length - 1 - i; j++) {
+      let claveA = ordenadas[j].fecha + " " + ordenadas[j].hora;
+      let claveB = ordenadas[j + 1].fecha + " " + ordenadas[j + 1].hora;
+
+      if (claveA < claveB) {
+        let auxiliar = ordenadas[j];
+        ordenadas[j] = ordenadas[j + 1];
+        ordenadas[j + 1] = auxiliar;
+      }
+    }
+  }
+
+  for (let i = 0; i < ordenadas.length; i++) {
+    let s = ordenadas[i];
     let esMia = false;
 
     if (s.clienteCorreo === usuarioActivo.correo) {
@@ -592,6 +614,27 @@ function guardarSolicitud(evento) {
     return false;
   }
 
+  /* Cambio propio: la fecha de la cita no puede ser anterior al día de hoy */
+  let hoy = new Date();
+  let anioHoy = hoy.getFullYear();
+  let mesHoy = hoy.getMonth() + 1;
+  let diaHoy = hoy.getDate();
+
+  if (mesHoy < 10) {
+    mesHoy = "0" + mesHoy;
+  }
+
+  if (diaHoy < 10) {
+    diaHoy = "0" + diaHoy;
+  }
+
+  let fechaHoy = anioHoy + "-" + mesHoy + "-" + diaHoy;
+
+  if (fecha < fechaHoy && solicitudEnEdicion === null) {
+    alert("La fecha no puede ser anterior a hoy.");
+    return false;
+  }
+
   if (hora === "") {
     alert("Seleccione una hora.");
     return false;
@@ -780,6 +823,21 @@ function cancelarEdicion() {
   document.getElementById("btn-guardar").textContent = "Guardar solicitud";
   document.getElementById("btn-cancelar").style.display = "none";
   mostrarSeccion("solicitudes");
+}
+
+/* Cambio propio: activar y desactivar el modo oscuro */
+function cambiarTema() {
+  let boton = document.getElementById("boton-tema");
+
+  if (modoOscuroActivo === false) {
+    document.body.classList.add("modo-oscuro");
+    modoOscuroActivo = true;
+    boton.textContent = "Modo claro";
+  } else {
+    document.body.classList.remove("modo-oscuro");
+    modoOscuroActivo = false;
+    boton.textContent = "Modo oscuro";
+  }
 }
 
 /* ------------------------------------------------------------
